@@ -13,9 +13,9 @@
 ---
 ## Budget and alarm images
 ---
-![Simplice-AWS-Alarm](assets/Simplice-AWS-Alarm.png)
+![Simplice-AWS-Alarm](assets/Simplice-aws-alarm2.png)
 ---
-![Simplice-AWS-Budget](assets/Simplice-AWS-Budget.png)
+![Simplice-AWS-Budget](assets/Simplice-aws-budget2.png)
 
 
 
