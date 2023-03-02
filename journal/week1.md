@@ -5,4 +5,22 @@ Docker file contain  instruction on how to run your app
 - Learn about Dockerfile syntax
 - was able to run the application locally 
 - was able to build my backend application docker image with the command docker build -t  backend-flask ./backend-flask 
-- was able to run the image with this command FRONTEND_URL="*"  BACKEND_URL="*" docker  run --rm -p 4567:4567 -d backend-flask
+- was able to run the image with this command  : docker  run --rm -p 4567:4567 -d  -e FRONTEND_URL='*'  -e BACKEND_URL='*' backend-flask
+- was able to open the OS bash CLI on which our container is running with this command Docker exec -it <dockerImageID> bash
+
+---
+##  Screenshot images
+---
+
+- Application running locally
+![application running locally](assets/app-running-locally.png)
+
+---
+
+- Build Docker image - run container
+![build-docker-image-run-docker-container-and-test-it](assets/build-docker-image-run-docker-container-and-test-it.png)
+
+---
+
+- see env-var-in-the-container-OS
+![env-var-in-the-container-OS](assets/env-var-in-the-container-OS.png)
