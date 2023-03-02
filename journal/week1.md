@@ -33,5 +33,5 @@ Docker file contain  instruction on how to run your app
 
 --
 
-- sfrontend-running.png
+- frontend-running.png
 ![frontend-running.png](assets/frontend-running.png)
