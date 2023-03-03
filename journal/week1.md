@@ -14,6 +14,7 @@ Docker file contain  instruction on how to run your app
 - was able to run the compose command locally 
 - run cruddud frontend and backend run locally
 - push my frontend and backend docker images to my docker Hub
+ - Learn how to use Snyk to scan my application for images vulnerabilities
  
 
 ---
