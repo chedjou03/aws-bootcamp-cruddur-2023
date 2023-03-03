@@ -12,6 +12,8 @@ Docker file contain  instruction on how to run your app
 - underdant the container orchestration  
 - was able to run the compose command locally 
 - run cruddud frontend and backend run locally
+- push my frontend and backend docker images to my docker Hub
+ 
 
 ---
 ##  Screenshot images
@@ -49,6 +51,11 @@ Docker file contain  instruction on how to run your app
 
 - cruddud-frontend-backend-running-locally
 ![cruddud-frontend-backend-running-locally](assets/cruddud-frontend-backend-running-locally.png)
+ 
+---
+
+- cruddud-frontend-backend-on-dockerHub
+![cruddud-frontend-backend-running-dockerHub](assets/dockerHub.png)
   
-  cruddud-frontend-backend-running-locally
+  
 
