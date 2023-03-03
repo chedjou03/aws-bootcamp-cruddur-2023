@@ -54,7 +54,7 @@ Docker file contain  instruction on how to run your app
  
 ---
 
-- cruddud-frontend-backend-on-dockerHub
+- cruddud-frontend-backend-images-on-dockerHub
 ![cruddud-frontend-backend-running-dockerHub](assets/dockerHub.png)
   
   
