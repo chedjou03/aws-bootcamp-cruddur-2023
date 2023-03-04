@@ -14,7 +14,9 @@ Docker file contain  instruction on how to run your app
 - was able to run the compose command locally 
 - run cruddud frontend and backend run locally
 - push my frontend and backend docker images to my docker Hub
- - Learn how to use Snyk to scan my application for images vulnerabilities
+- Learn how to use Snyk to scan my application for images vulnerabilities
+- I was able to implement the notification endpoint in the backend
+- I was able to add the frontend notification page and hooks it to the backend
  
 
 ---
@@ -63,4 +65,9 @@ Docker file contain  instruction on how to run your app
 
 - Snyk-project-scan
 ![Snyk-project-scan](assets/Snyk-project-scan.png)
+
+---
+
+- backend-notifications
+![backend-notifications](assets/backend-notifications.png)
 
