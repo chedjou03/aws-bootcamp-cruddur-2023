@@ -77,3 +77,9 @@ Docker file contain  instruction on how to run your app
 - frontend-notifications
 ![frontend-notifications](assets/frontend-notification.png)
 
+---
+
+- postgres-locally
+![postgres-locally](assets/postgres-locally.png)
+
+
