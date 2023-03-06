@@ -17,6 +17,7 @@ Docker file contain  instruction on how to run your app
 - Learn how to use Snyk to scan my application for images vulnerabilities
 - I was able to implement the notification endpoint in the backend
 - I was able to add the frontend notification page and hooks it to the backend
+- was able setup dynamoDD and postgre local using docker-compose
  
 
 ---
