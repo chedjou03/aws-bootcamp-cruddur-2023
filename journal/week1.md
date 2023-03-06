@@ -74,5 +74,5 @@ Docker file contain  instruction on how to run your app
 ---
 
 - frontend-notifications
-![frontend-notifications](assets/frontend-notifications.png)
+![frontend-notifications](assets/frontend-notification.png)
 
