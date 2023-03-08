@@ -10,4 +10,8 @@
 - honeycomb-cruddur-backend-logs
 ![honeycomb-cruddur-backend-logs](assets/honeycomb-cruddur-backend-logs.png)
 
+- honeycomb-trace
+![honeycomb-trace](assets/honeycomb-trace.png)
+
+
 
