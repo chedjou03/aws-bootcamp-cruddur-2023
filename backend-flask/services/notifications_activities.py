@@ -4,7 +4,9 @@ tracer = trace.get_tracer("notification.activitie")
 class NotificationsActivities:
   def run():
     with tracer.start_as_current_span("notification-activities-mock-data"):
+      span = trace.get_current_span()
       now = datetime.now(timezone.utc).astimezone()
+      span.set_attribute("app.now",now.isoformat())
       results = [{
         'uuid': '68f126b0-1ceb-4a33-88be-d90fa7109eee',
         'handle':  'Simplice chedjou ',
@@ -26,4 +28,5 @@ class NotificationsActivities:
         }],
       }
       ]
+      span.set_attribute("app.result_lenght",len(results))
       return results
