@@ -10,7 +10,7 @@
 
 ---
 ##  Screenshot images
----
+
 
 - honeycomb-cruddur-backend-logs
 ![honeycomb-cruddur-backend-logs](assets/honeycomb-cruddur-backend-logs.png)
