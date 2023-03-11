@@ -3,7 +3,6 @@ vscode:
   extensions:
     - 42Crunch.vscode-openapi
     - cweijan.vscode-postgresql-client2
-
 tasks:
   - name: aws-cli
     env:
@@ -33,7 +32,8 @@ tasks:
       gp env HONEYCOMB_API_KEY="CffcR80k1ZzfeVwtE1s4lP"
       export HONEYCOMB_SERVICE_NAME="Cruddur"
       gp env HONEYCOMB_SERVICE_NAME="Cruddur"
-      
+      export ROLLBAR_ACCESS_TOKEN="80d04adbe784415698c2110d026e52a4"
+      gp env ROLLBAR_ACCESS_TOKEN="80d04adbe784415698c2110d026e52a4"
 ports:
   - name: frontend
     port: 3000

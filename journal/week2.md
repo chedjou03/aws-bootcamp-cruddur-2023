@@ -7,6 +7,7 @@
 - was able to configure backend flask to send logs to AWS X-Ray
 - was able to see logs in aws cloudwatcxh x-ray
 - was able to configure backend flask to send logs to AWS CloudWatch
+- was able to configure backend flask to send error logs to RollBar
 
 
 ---
