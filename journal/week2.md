@@ -51,3 +51,8 @@
 
 - aws-cloudwatch-logs-list
 ![aws-cloudwatch-logs-list](assets/aws-cloudwatch-logs-list.png)
+
+---
+
+- rollbar-error-logs
+![rollbar-error-logs](assets/rollbar-error-logs.png)
