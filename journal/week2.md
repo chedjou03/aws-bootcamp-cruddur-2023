@@ -56,3 +56,9 @@
 
 - rollbar-error-logs
 ![rollbar-error-logs](assets/rollbar-error-logs.png)
+
+---
+
+- rollbar-error-list
+![rollbar-error-list](assets/rollbar-error-list.png)
+

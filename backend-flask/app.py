@@ -110,7 +110,11 @@ cors = CORS(
 # Rollbar test -----------------
 @app.route('/rollbar/test')
 def rollbar_test():
-    rollbar.report_message('Hello World!', 'warning')
+    rollbar.report_message('Hello World warning !', 'warning')
+    rollbar.report_message('Hello World error!', 'error')
+    rollbar.report_message('Hello World info!', 'info')
+    rollbar.report_message('Hello World debug!', 'debug')
+    rollbar.report_message('Hello World critical!', 'critical')
     return "Hello World!"
 
 
