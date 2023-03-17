@@ -6,6 +6,7 @@
 - was able to log into cruddur with the AWS cognito user
 - was able to sign up a user throught crudder sign up page
 - was able to confirm a user throught the cruddur confirmation page with the code recieved by email
+- was able to implemente the password recovery
 
 
 ---
@@ -32,3 +33,11 @@
 ---
 - singup-unconfirmation-code
 ![singup-unconfirmation-code](assets/singup-unconfirmation-code.png)
+
+---
+- password-recovery-form
+![password-recovery-form](assets/password-recovery-form.png)
+
+---
+- successfull-password-recovery
+![successfull-password-recovery](assets/successfull-password-recovery.png)
