@@ -7,6 +7,7 @@
 - was able to sign up a user throught crudder sign up page
 - was able to confirm a user throught the cruddur confirmation page with the code recieved by email
 - was able to implemente the password recovery
+- was able to pass the access_token from the frontend to the backend
 
 
 ---
@@ -41,3 +42,7 @@
 ---
 - successfull-password-recovery
 ![successfull-password-recovery](assets/successfull-password-recovery.png)
+
+---
+- access-token-backend
+![access-token-backend](assets/access-token-backend.png)

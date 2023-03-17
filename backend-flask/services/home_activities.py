@@ -1,5 +1,6 @@
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
+from flask import request
 
 
 tracer = trace.get_tracer("home.activitie")
