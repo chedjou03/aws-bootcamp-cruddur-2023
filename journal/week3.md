@@ -16,6 +16,9 @@
 - aws-cognito-user-confirmed
 ![aws-cognito-user-confirmed](assets/aws-cognito-user-confirmed.png)
 
+- aws-cognito-user-confirmed1
+![aws-cognito-user-confirmed1](assets/aws-cognito-user-confirmed1.png)
+
 ---
 - aws-cognito-user-logged-cruddur
 ![aws-cognito-user-logged-cruddur](assets/aws-cognito-user-logged-cruddur.png)
