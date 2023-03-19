@@ -48,6 +48,8 @@ services:
     environment:
       - POSTGRES_USER=postgres
       - POSTGRES_PASSWORD=password
+      - export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+      - gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
     ports:
       - '5432:5432'
     volumes: 
