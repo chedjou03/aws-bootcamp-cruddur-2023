@@ -6,18 +6,18 @@ RED='\033[0;31m'
 NC='\033[0m' # No Color
 
 
-schema_path="$(realpath .)/db/schema.sql"
+seed_path="$(realpath .)/db/seed.sql"
 
-echo -e "${RED}schema_path${NC}"
+echo -e "${GREEN} $seed_path ${NC}"
 
 echo CONNECTION_URL $CONNECTION_URL
 
 if [ "$1" = "prod" ]; then
-  echo -e "${GREEN}Running in production mode ${NC}"
+  echo -e "${RED} Running in production mode ${NC}"
   CON_URL=$PROD_CONNECTION_URL
 else
-  echo -e "${GREEN}Running in development mode ${NC}"
+  echo -e "${RED} Running in development mode ${NC}"
   CON_URL=$CONNECTION_URL
 fi
 
-psql $CON_URL cruddur < $schema_path
+psql $CON_URL cruddur < $seed_path
