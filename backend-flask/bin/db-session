@@ -5,11 +5,8 @@ GREEN='\033[0;32m'
 RED='\033[0;31m'
 NC='\033[0m' # No Color
 
-echo -e "${GREEN}=====db-schema-load ${NC}"
+echo -e "${GREEN}=====db-session${NC}"
 
-schema_path="$(realpath .)/db/schema.sql"
-
-echo -e "schema_path=${RED}$schema_path${NC}"
 
 echo CONNECTION_URL $CONNECTION_URL
 
@@ -21,4 +18,14 @@ else
   CON_URL=$CONNECTION_URL
 fi
 
-psql $CON_URL cruddur < $schema_path
+
+NO_DB_CONNECTION_URL=$(sed 's/\/cruddur//g' <<<"$CONNECTION_URL")
+
+
+psql $NO_DB_CONNECTION_URL -c "select pid as process_id, \
+       usename as user,  \
+       datname as db, \
+       client_addr, \
+       application_name as app,\
+       state \
+from pg_stat_activity;"
