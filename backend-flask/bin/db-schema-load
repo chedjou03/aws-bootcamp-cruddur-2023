@@ -8,7 +8,7 @@ NC='\033[0m' # No Color
 
 schema_path="$(realpath .)/db/schema.sql"
 
-echo -e "${RED}schema_path${NC}"
+echo -e "schema_path=${RED}$schema_path${NC}"
 
 echo CONNECTION_URL $CONNECTION_URL
 

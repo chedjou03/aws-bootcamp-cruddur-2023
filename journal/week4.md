@@ -20,9 +20,12 @@
 ![shell-echo-color](assets/shell-echo-color.png)
 
 ---
-##  DATA in user table S
+##  DATA in Activities and users table 
 
-- data-userr-table
-![data-userr-table](assets/data-userr-table.png)
+- data-activities-user-table
+![data-activities-user-table](assets/data-activities-user-table.png)
+
+- data-user-table
+![data-user-table](assets/data-userr-table.png)
 
 
