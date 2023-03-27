@@ -6,4 +6,14 @@ NC='\033[0m' # No Color
 
 echo -e "${GREEN}=====db-connect ${NC}"
 
-psql $CONNECTION_URL
+if [ "$1" = "prod" ]; then
+  echo "Running in production mode"
+  echo PROD_CONNECTION_URL= $PROD_CONNECTION_URL
+  URL=$PROD_CONNECTION_URL
+else
+  echo "Running in develop mode"
+  echo CONNECTION_URL= $CONNECTION_URL
+  URL=$CONNECTION_URL
+fi
+
+psql $URL

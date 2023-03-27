@@ -23,6 +23,12 @@ tasks:
     command:
       gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
       export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+      export PROD_CONNECTION_URL="postgresql://cruddurroot:Papiponcho@cruddur-db-instance.csg0x5lukn0i.us-east-1.rds.amazonaws.com:5432/cruddur"
+      gp env PROD_CONNECTION_URL="postgresql://cruddurroot:Papiponcho@cruddur-db-instance.csg0x5lukn0i.us-east-1.rds.amazonaws.com:5432/cruddur"
+      export DB_SG_ID="sg-01e7f8e34bfd1fdfb"
+      gp env DB_SG_ID="sg-01e7f8e34bfd1fdfb"
+      export DB_SG_RULE_ID="sgr-0d1a09047705b5874"
+      gp env DB_SG_RULE_ID="sgr-0d1a09047705b5874"
       source "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
       
   
