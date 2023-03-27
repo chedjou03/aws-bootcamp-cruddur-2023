@@ -29,3 +29,12 @@
 ![data-user-table](assets/data-userr-table.png)
 
 
+---
+##  view data imported from seed data in a UI 
+
+- data-imported-from-seed-in-ui
+![data-imported-from-seed-in-ui](assets/data-imported-from-seed-in-ui.png)
+
+
+
+
