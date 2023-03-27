@@ -4,6 +4,7 @@
 - was able to define and run create database, drop database, load data sql script
 - was able to output color of the echo comand when running db script  
 - was able to run the schema load and seed sql script 
+- was able to have the home activities UI component read data from local postgre DB
 
 
 
