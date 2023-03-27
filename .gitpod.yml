@@ -21,8 +21,10 @@ tasks:
       sudo apt update
       sudo apt install -y postgresql-client-13 libpq-dev
     command:
-      export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
       gp env CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+      export CONNECTION_URL="postgresql://postgres:password@localhost:5432/cruddur"
+      source "$THEIA_WORKSPACE_ROOT/backend-flask/bin/rds-update-sg-rule"
+      
   
   - name: react-js
     command: 
