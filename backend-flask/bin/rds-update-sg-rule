@@ -1,0 +1,21 @@
+#! /usr/bin/bash
+
+# Define color variables
+GREEN='\033[0;32m'
+NC='\033[0m' # No Color
+
+export DB_SG_ID="sg-01e7f8e34bfd1fdfb"
+gp env DB_SG_ID="sg-01e7f8e34bfd1fdfb"
+
+export DB_SG_RULE_ID="sgr-0d1a09047705b5874"
+gp env DB_SG_RULE_ID="sgr-0d1a09047705b5874"
+
+echo -e "${GREEN}=====RDS-update-aws-rds-postgre-sg-rule${NC}"
+
+GITPOD_IP=$(curl ifconfig.me)
+
+echo GITPOD_IP $GITPOD_IP 
+
+aws ec2 modify-security-group-rules \
+    --group-id $DB_SG_ID \
+    --security-group-rules "SecurityGroupRuleId=$DB_SG_RULE_ID,SecurityGroupRule={Description=GITPOD,IpProtocol=tcp,FromPort=5432,ToPort=5432,CidrIpv4=$GITPOD_IP/32}"

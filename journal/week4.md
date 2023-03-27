@@ -5,6 +5,10 @@
 - was able to output color of the echo comand when running db script  
 - was able to run the schema load and seed sql script 
 - was able to have the home activities UI component read data from local postgre DB
+- was able to connect to AWS protgree DB in gitpod CLI
+- was able to dynamically update the aws postgre DB security group inbound rule IP address
+- was able to write a script to dynamically update the postgre DB security group inbound rule IP address
+
 
 
 
