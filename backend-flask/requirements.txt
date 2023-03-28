@@ -11,3 +11,4 @@ blinker
 rollbar
 psycopg[binary]
 psycopg[pool]
+aws-psycopg2
