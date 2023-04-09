@@ -1,5 +1,6 @@
 from psycopg_pool import ConnectionPool
 import os
+import json
 
 class Db:
 
@@ -45,8 +46,10 @@ class Db:
     with self.pool.connection() as conn:
       with conn.cursor() as cur:
         cur.execute(wrapped_sql)
-        json = cur.fetchone()
-        return json[0]
+        json = cur.fetchall()
+        print("TYPE -------------------")
+        print(type(json))
+        return json
     
   def print_sql_err(self,err):
     # get details about the exception

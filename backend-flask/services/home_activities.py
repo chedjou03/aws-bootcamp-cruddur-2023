@@ -2,6 +2,7 @@ from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
 from flask import request
 from lib.db import db
+import json
 
 tracer = trace.get_tracer("home.activitie")
 class HomeActivities:
@@ -30,6 +31,16 @@ class HomeActivities:
         ORDER BY activities.created_at DESC
         """)
       
+    print("result -------------------")
     print(result)
-    return result
+    print(" result[0]-------------------")
+    print(result[0])
+  #   json_list = json.loads(result)
+  #   json_list[-1] = json_list[-1].rstrip(",")
+  #   json_str = json.dumps(json_list)
+  #   print(json_str)
+  #  # result = result.rstrip(",")
+  #  # print(result)
+    print(type(result[0]))
+    return result[0]
       
