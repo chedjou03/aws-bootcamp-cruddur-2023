@@ -1,6 +1,14 @@
 import uuid
 from datetime import datetime, timedelta, timezone
+from opentelemetry import trace
+from flask import request
+from lib.db import pool,query_wrap_array,query_wrap_array
+
+tracer = trace.get_tracer("create.activitie")
 class CreateActivity:
+  def validation():
+
+
   def run(message, user_handle, ttl):
     model = {
       'errors': None,
@@ -8,6 +16,10 @@ class CreateActivity:
     }
 
     now = datetime.now(timezone.utc).astimezone()
+    user_uuid =''
+
+    
+
 
     if (ttl == '30-days'):
       ttl_offset = timedelta(days=30) 
@@ -40,6 +52,7 @@ class CreateActivity:
         'message': message
       }   
     else:
+      self.create_activity()
       model['data'] = {
         'uuid': uuid.uuid4(),
         'display_name': 'Andrew Brown',
@@ -49,3 +62,31 @@ class CreateActivity:
         'expires_at': (now + ttl_offset).isoformat()
       }
     return model
+  
+  def create_activity(user_uuid,message,expired_at):
+    sql = f"""
+    INSERT 
+    INTO public.activities (
+          user_uuid, 
+          message,
+          expires_at
+          ) 
+    VALUES(
+          '{user_uuid}', 
+          '{message}', 
+          '{expires_at}'
+        )
+    """
+    print(sql)
+    try:
+      with pool.connection() as conn:
+          with conn.cursor() as cur:
+            cur.execute(sql)
+            conn.commit()
+    except (Exception, psycopg2.DatabaseError) as error:
+      print(error)
+    finally:
+      if conn is not None:
+          cur.close()
+          conn.close()
+          print('Database connection closed.')
