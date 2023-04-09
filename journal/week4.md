@@ -136,6 +136,9 @@ def lambda_handler(event, context):
 - lambda-vpc
 ![lambda-vpc](assets/lambda-vpc.png)
 
+- lambda-cloudwatchlog
+![llambda-cloudwatchlog](assets/lambda-cloudwatchlog.png)
+
 
 
 
