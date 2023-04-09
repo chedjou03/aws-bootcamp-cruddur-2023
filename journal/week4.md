@@ -75,7 +75,8 @@ aws ec2 modify-security-group-rules \
 ---
 ##  Lambda fuction to insert new user in RDS table 
 
-had this lamda function attached to my cognito user pole, that will be run every time a new user in confirmed in our user pool. the purpose of that lambda function is to insert the newly confirm user in the rds users table
+had this lamda function attached to my cognito user pole, that will be run every time a new user in confirmed in our user pool. the purpose of that lambda function is to insert the newly confirm user in the rds users table.
+in order for my lambda funtion to accesst my RDS, I have to got attached this IAM policy "AWSLambdaVPCAccessExecutionRole" to the role attached to my lambda, so that my lambda could have access to all the ressource within mu VPC, and I also have to add my lambda fucton to the same VPC, subnet as my RDD 
 
 ``` python
 import json
@@ -128,6 +129,15 @@ def lambda_handler(event, context):
 ```
 - insert-newly-confirmed-user-in-rds
 ![insert-newly-confirmed-user-in-rds](assets/insert-newly-confirmed-user-in-rds.png)
+
+- lambda-access-to-vpc-ressource
+![ilambda-access-to-vpc-ressource](assets/lambda-access-to-vpc-ressource.png)
+
+- lambda-vpc
+![lambda-vpc](assets/lambda-vpc.png)
+
+
+
 
 
 
