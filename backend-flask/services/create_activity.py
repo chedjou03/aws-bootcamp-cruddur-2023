@@ -2,11 +2,12 @@ import uuid
 from datetime import datetime, timedelta, timezone
 from opentelemetry import trace
 from flask import request
-from lib.db import pool,query_wrap_array,query_wrap_array
+from lib.db import db
 
 tracer = trace.get_tracer("create.activitie")
 class CreateActivity:
-  def validation():
+  
+  #def validation():
 
 
   def run(message, user_handle, ttl):
@@ -78,15 +79,5 @@ class CreateActivity:
         )
     """
     print(sql)
-    try:
-      with pool.connection() as conn:
-          with conn.cursor() as cur:
-            cur.execute(sql)
-            conn.commit()
-    except (Exception, psycopg2.DatabaseError) as error:
-      print(error)
-    finally:
-      if conn is not None:
-          cur.close()
-          conn.close()
-          print('Database connection closed.')
+    #query_commit(sql)
+    
