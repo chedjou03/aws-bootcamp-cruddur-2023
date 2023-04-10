@@ -1,6 +1,7 @@
 from psycopg_pool import ConnectionPool
 import os
 import json
+import re
 
 class Db:
 
@@ -11,14 +12,41 @@ class Db:
     connection_url = os.getenv("CONNECTION_URL")
     self.pool = ConnectionPool(connection_url)
   
-  def query_commit(self,sql):
+  def query_commit(self,sql,params):
+    print("SQL STATEMENT [commit with returning ID]---------------")
+    print(sql)
+    pattern = r"\bRETURNING\b"
+    is_returning_id = re.search(pattern, sql)
+
+    try:
+      with self.pool.connection() as conn:
+        with conn.cursor() as cur:
+          cur.execute(sql,params)
+          if is_returning_id:
+            returning_id = cur.fetchone()[0]
+            conn.commit()
+          if is_returning_id:
+            print("returning_id -----------------------------")
+            print(returning_id)
+            return returning_id
+    except Exception as error:
+      self.print_sql_err(error)
+      #conn.rollback()
+    finally:
+      if conn is not None:
+        cur.close()
+        conn.close()
+        print('Database connection closed.')
+
+
+  def query_commit1(self,sql):
     print("SQL STATEMENT---------------")
     print(sql)
     try:
-      conn = self.pool.connection() 
-      cur = conn.cursor() 
-      cur.execute(sql)
-      conn.commit()
+      with self.pool.connection() as conn:
+        with conn.cursor() as cur:
+          cur.execute(sql)
+          conn.commit()
     except Exception as error:
       self.print_sql_err(error)
       #conn.rollback()
@@ -30,26 +58,42 @@ class Db:
   
   def query_object_json(self,sql):
     print("SQL STATEMENT---[Object]------------")
-    print(sql + "\n")
+    print(sql)
     wrapped_sql = self.query_wrap_object(sql)
-    conn = self.pool.connection() 
-    cur = conn.cursor() 
-    cur.execute(wrapped_sql)
-    json = cur.fetchone()
-    return json[0]
+    try:
+      conn = self.pool.connection() 
+      cur = conn.cursor() 
+      cur.execute(wrapped_sql)
+      json = cur.fetchone()
+      return json[0]
+    except Exception as error:
+      self.print_sql_err(error)
+      #conn.rollback()
+    finally:
+      if conn is not None:
+        cur.close()
+        conn.close()
+        print('Database connection closed.')
     
   
   def query_array_json(self,sql):
     print("SQL STATEMENT---[Array]------------")
-    print(sql + "\n")
+    print(sql)
     wrapped_sql = self.query_wrap_array(sql)
-    with self.pool.connection() as conn:
-      with conn.cursor() as cur:
-        cur.execute(wrapped_sql)
-        json = cur.fetchone()
-        print("TYPE -------------------")
-        print(type(json))
-        return json[0]
+    try:
+      with self.pool.connection() as conn:
+        with conn.cursor() as cur:
+          cur.execute(wrapped_sql)
+          json = cur.fetchone()
+          return json[0]
+    except Exception as error:
+      self.print_sql_err(error)
+      #conn.rollback()
+    finally:
+      if conn is not None:
+        cur.close()
+        conn.close()
+        print('Database connection closed.')
     
   def print_sql_err(self,err):
     # get details about the exception
