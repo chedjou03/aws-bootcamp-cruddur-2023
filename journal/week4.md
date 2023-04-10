@@ -9,6 +9,7 @@
 - was able to dynamically update the aws postgre DB security group inbound rule IP address
 - was able to write a script to dynamically update the postgre DB security group inbound rule IP address
 - was able to have my lambda function update the the user table with the new enrolled user send through cognito
+- was able to create a new crud
 
 
 
@@ -138,6 +139,12 @@ def lambda_handler(event, context):
 
 - lambda-cloudwatchlog
 ![llambda-cloudwatchlog](assets/lambda-cloudwatchlog.png)
+
+- create-crud-ui
+![create-crud-ui](assets/create-crud-ui.png)
+
+- create-crud-db
+![create-crud-db](assets/create-crud-db.png)
 
 
 
