@@ -71,8 +71,6 @@ class CreateActivity:
       'message': message,
       'expires_at': expires_at
     })
-    print("----------------------uuid")
-    print(uuid)
     return uuid
   
   def query_object_activity(uuid):

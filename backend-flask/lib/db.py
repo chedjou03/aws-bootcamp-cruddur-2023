@@ -109,6 +109,7 @@ class Db:
     no_color = '\033[0m'
     print(f'{green} SQL STATEMENT-[{title}]------{no_color}')
     print(sql)
+    print(f'{green} -----------------------{no_color}')
   
   def print_params(self,params):
     green = '\033[0;32m'
@@ -116,5 +117,6 @@ class Db:
     print(f'{green} SQL Params:{no_color}')
     for key, value in params.items():
       print(key, ":", value)
+    print(f'{green} -----------------------{no_color}')
     
 db = Db()
