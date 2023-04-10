@@ -30,17 +30,6 @@ class HomeActivities:
         LEFT JOIN public.users ON users.uuid = activities.user_uuid
         ORDER BY activities.created_at DESC
         """)
-      
-    print("result -------------------")
     print(result)
-    print(" result[0]-------------------")
-    print(result[0])
-  #   json_list = json.loads(result)
-  #   json_list[-1] = json_list[-1].rstrip(",")
-  #   json_str = json.dumps(json_list)
-  #   print(json_str)
-  #  # result = result.rstrip(",")
-  #  # print(result)
-    print(type(result[0]))
-    return result[0]
+    return result
       

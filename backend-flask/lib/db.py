@@ -31,7 +31,7 @@ class Db:
   def query_object_json(self,sql):
     print("SQL STATEMENT---[Object]------------")
     print(sql + "\n")
-    wrapped_sql = self.query_wrap_array(sql)
+    wrapped_sql = self.query_wrap_object(sql)
     conn = self.pool.connection() 
     cur = conn.cursor() 
     cur.execute(wrapped_sql)
@@ -42,14 +42,14 @@ class Db:
   def query_array_json(self,sql):
     print("SQL STATEMENT---[Array]------------")
     print(sql + "\n")
-    wrapped_sql = self.query_wrap_object(sql)
+    wrapped_sql = self.query_wrap_array(sql)
     with self.pool.connection() as conn:
       with conn.cursor() as cur:
         cur.execute(wrapped_sql)
-        json = cur.fetchall()
+        json = cur.fetchone()
         print("TYPE -------------------")
         print(type(json))
-        return json
+        return json[0]
     
   def print_sql_err(self,err):
     # get details about the exception
