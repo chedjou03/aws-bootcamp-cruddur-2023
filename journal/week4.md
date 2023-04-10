@@ -146,6 +146,9 @@ def lambda_handler(event, context):
 - create-crud-db
 ![create-crud-db](assets/create-crud-db.png)
 
+- more-crud-post
+![more-crud-post](assets/more-crud-post.png)
+
 
 
 
