@@ -2,6 +2,7 @@ from psycopg_pool import ConnectionPool
 import os
 import json
 import re
+from flask import current_app as app
 
 class Db:
 
@@ -12,88 +13,65 @@ class Db:
     connection_url = os.getenv("CONNECTION_URL")
     self.pool = ConnectionPool(connection_url)
   
-  def query_commit(self,sql,params):
-    print("SQL STATEMENT [commit with returning ID]---------------")
-    print(sql)
+  def query_commit(self,sql,params={}):
+    
+    self.print_sql('commit with returning',sql)
+
     pattern = r"\bRETURNING\b"
     is_returning_id = re.search(pattern, sql)
 
     try:
       with self.pool.connection() as conn:
-        with conn.cursor() as cur:
-          cur.execute(sql,params)
-          if is_returning_id:
-            returning_id = cur.fetchone()[0]
-            conn.commit()
-          if is_returning_id:
-            print("returning_id -----------------------------")
-            print(returning_id)
-            return returning_id
-    except Exception as error:
-      self.print_sql_err(error)
-      #conn.rollback()
-    finally:
-      if conn is not None:
-        cur.close()
-        conn.close()
-        print('Database connection closed.')
+        cur =  conn.cursor()
+        cur.execute(sql,params)
+        if is_returning_id:
+          returning_id = cur.fetchone()[0]
+        conn.commit() 
+        if is_returning_id:
+          return returning_id
+    except Exception as err:
+      self.print_sql_err(err)
 
-
-  def query_commit1(self,sql):
-    print("SQL STATEMENT---------------")
-    print(sql)
-    try:
-      with self.pool.connection() as conn:
-        with conn.cursor() as cur:
-          cur.execute(sql)
-          conn.commit()
-    except Exception as error:
-      self.print_sql_err(error)
-      #conn.rollback()
-    finally:
-      if conn is not None:
-        cur.close()
-        conn.close()
-        print('Database connection closed.')
   
-  def query_object_json(self,sql):
-    print("SQL STATEMENT---[Object]------------")
-    print(sql)
+  def query_object_json(self,sql,params={}):
+    self.print_sql('json',sql)
+    self.print_params(params)
     wrapped_sql = self.query_wrap_object(sql)
-    try:
-      conn = self.pool.connection() 
-      cur = conn.cursor() 
-      cur.execute(wrapped_sql)
-      json = cur.fetchone()
-      return json[0]
-    except Exception as error:
-      self.print_sql_err(error)
-      #conn.rollback()
-    finally:
-      if conn is not None:
-        cur.close()
-        conn.close()
-        print('Database connection closed.')
+
+    with self.pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(wrapped_sql,params)
+        json = cur.fetchone()
+        if json == None:
+          "{}"
+        else:
+          return json[0]
     
   
-  def query_array_json(self,sql):
-    print("SQL STATEMENT---[Array]------------")
-    print(sql)
+  def query_array_json(self,sql,params={}):
+    self.print_sql('array',sql)
+
     wrapped_sql = self.query_wrap_array(sql)
-    try:
-      with self.pool.connection() as conn:
-        with conn.cursor() as cur:
-          cur.execute(wrapped_sql)
-          json = cur.fetchone()
-          return json[0]
-    except Exception as error:
-      self.print_sql_err(error)
-      #conn.rollback()
-    finally:
-      if conn is not None:
-        cur.close()
-        conn.close()
-        print('Database connection closed.')
+    with self.pool.connection() as conn:
+      with conn.cursor() as cur:
+        cur.execute(wrapped_sql,params)
+        json = cur.fetchone()
+        return json[0]
+  
+  def template(self,*args):
+    pathing = list((app.root_path,'db','sql',) + args)
+    pathing[-1] = pathing[-1] + ".sql"
+
+    template_path = os.path.join(*pathing)
+
+    green = '\033[92m'
+    no_color = '\033[0m'
+    print("\n")
+    print(f'{green} Load SQL Template: {template_path} {no_color}')
+
+    with open(template_path, 'r') as f:
+      template_content = f.read()
+    return template_content
     
   def print_sql_err(self,err):
     # get details about the exception
@@ -125,5 +103,18 @@ class Db:
     ) array_row);
     """
     return sql
+  
+  def print_sql(self,title,sql):
+    green = '\033[0;32m'
+    no_color = '\033[0m'
+    print(f'{green} SQL STATEMENT-[{title}]------{no_color}')
+    print(sql)
+  
+  def print_params(self,params):
+    green = '\033[0;32m'
+    no_color = '\033[0m'
+    print(f'{green} SQL Params:{no_color}')
+    for key, value in params.items():
+      print(key, ":", value)
     
 db = Db()
