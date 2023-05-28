@@ -22,7 +22,8 @@ with app.app_context():
       # send exceptions from `app` to rollbar, using flask's signal system.
       got_request_exception.connect(rollbar.contrib.flask.report_exception, app)
 
- 
+```
+
 
 
 
