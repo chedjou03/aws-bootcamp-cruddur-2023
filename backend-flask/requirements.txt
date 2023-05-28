@@ -12,3 +12,4 @@ rollbar
 psycopg[binary]
 psycopg[pool]
 aws-psycopg2
+boto3
