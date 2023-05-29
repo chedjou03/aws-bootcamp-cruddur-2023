@@ -7,4 +7,5 @@ else
 fi
 
 
-aws dynamodb list-tables $ENDPOINT_URL
+aws dynamodb list-tables $ENDPOINT_URL \
+    --output table
